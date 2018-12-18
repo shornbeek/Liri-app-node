@@ -1,1 +1,2 @@
-# Liri-app-node
+# Liri-node-app
+command line tool
