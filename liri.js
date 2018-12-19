@@ -4,7 +4,7 @@ var keys = require("./keys.js");
 var inquirer = require("inquirer");
 var fs = require("fs");
 
-fs.appendFile("random.txt", "Inception, Die Hard \n",  function(err) {
+fs.appendFile("random.txt", "Placeholder Text \n",  function(err) {
 
     // If the code experiences any errors it will log the error to the console.
     if (err) {
@@ -69,7 +69,13 @@ axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=cod
 var movie = (inputs.movie);
   axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
   function(response) {
-    // Then we print out the imdbRating
+
+    if (movie === undefined) {
+
+        console.log("You should watch Brigit Jones Diary");
+            // Then we print out the imdbRating
+    }
+else {
     console.log("Movie Title: " + response.data.Title);
     console.log("Movie Year: " + response.data.Year);
     console.log("IMDB Rating: " + response.data.imdbRating);
@@ -78,12 +84,9 @@ var movie = (inputs.movie);
     console.log("Movies Launguage: " + response.data.Language);
     console.log("Movie Plot: " + response.data.Plot);
     console.log("Actors: " + response.data.Actors);
+    }
   }
 );
-
-
-
-
-  console.log(inputs);
-  });
+//   console.log(inputs);
+});
   
