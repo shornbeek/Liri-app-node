@@ -50,17 +50,34 @@ inquirer.prompt([
 
 
 
-var artist = (inputs);
+var artist = (inputs.concert);
 axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
-  .then(function(response) {
+  .then(function(res) {
 
-    console.log(response.data);
+    console.log("Venue name " + res.data[0].venue.name);
+    console.log("City" + res.data[0].venue.city);
+    console.log("Time" + res.data[0].datetime);
   });
 
-  axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
+//   axios.get("https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx?client")
+//   .then(function(res) {
+//     console.log("Venue name " + res.data[0].venue.name);
+//     console.log("City" + res.data[0].venue.city);
+//     console.log("Time" + res.data[0].datetime);
+//   });
+
+var movie = (inputs.movie);
+  axios.get("http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy").then(
   function(response) {
     // Then we print out the imdbRating
-    console.log("The movie's rating is: " + response.data.imdbRating);
+    console.log("Movie Title: " + response.data.Title);
+    console.log("Movie Year: " + response.data.Year);
+    console.log("IMDB Rating: " + response.data.imdbRating);
+    console.log("Rotton TomatoesRating is: " + response.data.Ratings[1].Value);
+    console.log("Movies Country: " + response.data.Country);
+    console.log("Movies Launguage: " + response.data.Language);
+    console.log("Movie Plot: " + response.data.Plot);
+    console.log("Actors: " + response.data.Actors);
   }
 );
 
